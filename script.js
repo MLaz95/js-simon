@@ -5,7 +5,7 @@ const targetDate = new Date('Feb 12, 2024 09:30:00').getTime();
 
 // the interval constantly updates the difference between now and monday
 // and then prints the result on screen
-setInterval(function() {
+const timer = setInterval(function() {
 
     // the current date in milliseconds
     const now = new Date().getTime();
@@ -26,4 +26,10 @@ setInterval(function() {
 
     // print result on screen
     timerElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s ${mseconds}ms`;
+
+    if(waitTime < 0){
+        clearInterval(timer);
+        timerElement.innerHTML = `0d 0h 0m 0s 0ms <br> It's time for class!`
+    };
+
 }, 1);
