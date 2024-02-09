@@ -1,4 +1,5 @@
 const timerElement = document.querySelector('#timer');
+const textElement = document.querySelector('#message');
 
 // monday's date in milliseconds
 const targetDate = new Date('Feb 12, 2024 09:30:00').getTime();
@@ -21,15 +22,14 @@ const timer = setInterval(function() {
     const minutes = Math.floor((waitTime % (1000 * 60 * 60)) / (1000 * 60));
     // what doesn't fit into a minute gets turned into seconds
     const seconds = Math.floor((waitTime % (1000 * 60)) / 1000);
-    // what doesn't fit into a second stays in milliseconds
-    const mseconds = waitTime % 1000;
 
     // print result on screen
-    timerElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s ${mseconds}ms`;
+    timerElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
     if(waitTime < 0){
         clearInterval(timer);
-        timerElement.innerHTML = `0d 0h 0m 0s 0ms <br> It's time for class!`
+        timerElement.innerHTML = `0d 0h 0m 0s`
+        textElement.innerHTML = 'Time for class!'
     };
 
 }, 1);
